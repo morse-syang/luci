@@ -165,7 +165,7 @@ return view.extend({
 
 				ui.awaitReconnect(window.location.host, '192.168.1.1', 'openwrt.lan');
 			}, this))
-			.catch(function(e) { ui.addNotification(null, E('p', e.message)) })
+			.catch(function(e) { ui.addTimeLimitedNotification(null, E('p', e.message), 5000) })
 			.finally(function() { btn.firstChild.data = _('Upload archive...') });
 	},
 
@@ -309,7 +309,7 @@ return view.extend({
 
 				ui.showModal(_('Flash image?'), body);
 			}, this, ev.target))
-			.catch(function(e) { ui.addNotification(null, E('p', e.message)) })
+			.catch(function(e) { ui.addTimeLimitedNotification(null, E('p', e.message), 5000) })
 			.finally(L.bind(function(btn) {
 				btn.firstChild.data = _('Flash image...');
 			}, this, ev.target));
